@@ -14,6 +14,7 @@
   --light:#ffffff;
 }
 
+/* Reset */
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--dark);line-height:1.5;}
@@ -31,6 +32,7 @@ body{background:var(--bg);color:var(--dark);line-height:1.5;}
 
 /* ---------- HERO ---------- */
 .hero{
+  position: relative; /* для индикатора */
   min-height:90vh;
   display:flex;
   align-items:center;
@@ -39,26 +41,19 @@ body{background:var(--bg);color:var(--dark);line-height:1.5;}
   background:
     linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)),
     url("img/kitchen-bg.jpg") center/cover no-repeat;
-  animation: heroZoom 14s ease-in-out infinite alternate;
-}
-@keyframes heroZoom{
-  from{background-size:100%;}
-  to{background-size:105%;}
-}
-
-.hero-box{
-  max-width:900px;
-  text-align:center;
 }
 .hero h1{
   font-size:clamp(28px,5vw,48px);
   margin-bottom:15px;
+  text-align:center;
 }
 .hero p{
   font-size:18px;
   color:var(--grey);
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 20px;
 }
-
 .trust{
   margin:20px 0;
   display:flex;
@@ -66,15 +61,15 @@ body{background:var(--bg);color:var(--dark);line-height:1.5;}
   justify-content:center;
   flex-wrap:wrap;
   font-size:15px;
+  text-align:center;
 }
-
 .price{
   margin:25px 0;
   font-size:28px;
+  text-align:center;
 }
 .price .new{color:var(--accent);font-weight:700;}
 .price .old{text-decoration:line-through;color:#888;margin-left:10px;}
-
 .btn{
   display:inline-block;
   padding:16px 42px;
@@ -84,10 +79,42 @@ body{background:var(--bg);color:var(--dark);line-height:1.5;}
   font-size:18px;
   text-decoration:none;
   transition:.3s;
+  text-align:center;
+  margin:0 auto;
+  display:block;
+  width:fit-content;
 }
 .btn:hover{
   transform:translateY(-4px);
   box-shadow:0 15px 40px rgba(255,106,0,.4);
+}
+
+/* ---------- SCROLL INDICATOR (вправо) ---------- */
+.scroll-indicator{
+  position: absolute;  /* сразу абсолютный */
+  right: 20px;         /* справа от hero */
+  bottom: 20px;        /* чуть выше низа hero */
+  width: 24px;
+  height: 40px;
+  border: 2px solid #999;
+  border-radius: 20px;
+  opacity: 0.7;
+}
+.scroll-indicator span{
+  width:4px;
+  height:8px;
+  background:#999;
+  border-radius:2px;
+  position:absolute;
+  left:50%;
+  top:8px;
+  transform:translateX(-50%);
+  animation: scrollDot 1.5s infinite;
+}
+@keyframes scrollDot{
+  0%{opacity:0; top:8px;}
+  30%{opacity:1;}
+  100%{opacity:0; top:24px;}
 }
 
 /* ---------- SECTIONS ---------- */
@@ -166,13 +193,10 @@ footer{
 <body>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-box reveal">
+<section class="hero reveal">
+  <div>
     <h1>Потужний занурювальний блендер для щоденного готування вдома</h1>
-    <p>
-      Підійде для супів, пюре, соусів, ягід та тіста.
-      Простий у використанні та компактний для будь-якої кухні.
-    </p>
+    <p>Підійде для крем-супів, пюре, соусів, ягід та тіста. Простий у використанні та компактний для будь-якої кухні.</p>
 
     <div class="trust">
       <span>✔ Оплата при отриманні</span>
@@ -185,7 +209,11 @@ footer{
       <span class="old">1999 грн</span>
     </div>
 
-    <a href="#order" class="btn">Замовити з оплатою при отриманні</a>
+    <a href="#order" class="btn">Оформити замовлення</a>
+
+    <div class="scroll-indicator">
+      <span></span>
+    </div>
   </div>
 </section>
 
@@ -193,8 +221,7 @@ footer{
 <section class="section reveal">
   <h2>Розпаковка блендера — що входить у комплект</h2>
   <p style="text-align:center;max-width:700px;margin:0 auto 30px;">
-    На фото показано реальну комплектацію товару.
-    Ви отримуєте саме те, що бачите.
+    На відео показано реальну комплектацію товару. Ви отримуєте саме те, що бачите.
   </p>
   <video class="video" src="video/document_5388600616786366377.mp4" controls playsinline></video>
 </section>
@@ -237,19 +264,13 @@ footer{
 <!-- PAYMENT -->
 <section class="payment reveal">
   <h2>Оплата та доставка</h2>
-  <p>
-    Оплата здійснюється при отриманні у відділенні Нової Пошти.<br>
-    Передплата не потрібна — ви платите тільки після огляду товару.
-  </p>
+  <p>Оплата здійснюється при отриманні у відділенні Нової Пошти.<br>Передплата не потрібна — ви платите тільки після огляду товару.</p>
 </section>
 
 <!-- WARRANTY -->
 <section class="section reveal">
   <h2>Гарантія</h2>
-  <p style="text-align:center;">
-    Гарантія 6 місяців.<br>
-    У разі заводського браку допоможемо з обміном або поверненням.
-  </p>
+  <p style="text-align:center;">Гарантія 6 місяців.<br>У разі заводського браку допоможемо з обміном або поверненням.</p>
 </section>
 
 <!-- ORDER -->
@@ -264,12 +285,14 @@ footer{
 </footer>
 
 <script>
+// reveal animation
+ if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname);
+  }
 const reveals=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-    }
+    if(e.isIntersecting){e.target.classList.add('show');}
   });
 },{threshold:0.15});
 reveals.forEach(r=>obs.observe(r));
