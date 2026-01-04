@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suntera HB-703B</title>
+
+<style>
+:root{
+  --accent:#ff6a00;
+  --dark:#222;
+  --grey:#555;
+  --bg:#f6f3ef;
+  --light:#ffffff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--dark);line-height:1.5;}
+
+/* ---------- ANIMATIONS ---------- */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  background:
+    linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)),
+    url("img/kitchen-bg.jpg") center/cover no-repeat;
+  animation: heroZoom 14s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{
+  from{background-size:100%;}
+  to{background-size:105%;}
+}
+
+.hero-box{
+  max-width:900px;
+  text-align:center;
+}
+.hero h1{
+  font-size:clamp(28px,5vw,48px);
+  margin-bottom:15px;
+}
+.hero p{
+  font-size:18px;
+  color:var(--grey);
+}
+
+.trust{
+  margin:20px 0;
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+  font-size:15px;
+}
+
+.price{
+  margin:25px 0;
+  font-size:28px;
+}
+.price .new{color:var(--accent);font-weight:700;}
+.price .old{text-decoration:line-through;color:#888;margin-left:10px;}
+
+.btn{
+  display:inline-block;
+  padding:16px 42px;
+  border-radius:50px;
+  background:var(--accent);
+  color:#fff;
+  font-size:18px;
+  text-decoration:none;
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(255,106,0,.4);
+}
+
+/* ---------- SECTIONS ---------- */
+.section{
+  max-width:1200px;
+  margin:80px auto;
+  padding:0 20px;
+}
+.section h2{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:30px;
+}
+
+/* ---------- GRID / CARDS ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+.card{
+  background:var(--light);
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 15px 30px rgba(0,0,0,.05);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-6px);
+}
+
+/* ---------- VIDEO ---------- */
+.video{
+  display:block;
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
+}
+
+/* ---------- GALLERY ---------- */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.gallery img{
+  width:100%;
+  border-radius:15px;
+  transition:.4s;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+  box-shadow:0 15px 30px rgba(0,0,0,.2);
+}
+
+/* ---------- PAYMENT ---------- */
+.payment{
+  background:#fff1e3;
+  padding:60px 20px;
+  border-radius:30px;
+  text-align:center;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:#222;
+  color:#aaa;
+  text-align:center;
+  padding:25px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-box reveal">
+    <h1>Потужний занурювальний блендер для щоденного готування вдома</h1>
+    <p>
+      Підійде для супів, пюре, соусів, ягід та тіста.
+      Простий у використанні та компактний для будь-якої кухні.
+    </p>
+
+    <div class="trust">
+      <span>✔ Оплата при отриманні</span>
+      <span>✔ Без передплат</span>
+      <span>✔ Нова Пошта</span>
+    </div>
+
+    <div class="price">
+      <span class="new">1599 грн</span>
+      <span class="old">1999 грн</span>
+    </div>
+
+    <a href="#order" class="btn">Замовити з оплатою при отриманні</a>
+  </div>
+</section>
+
+<!-- UNBOXING -->
+<section class="section reveal">
+  <h2>Розпаковка блендера — що входить у комплект</h2>
+  <p style="text-align:center;max-width:700px;margin:0 auto 30px;">
+    На фото показано реальну комплектацію товару.
+    Ви отримуєте саме те, що бачите.
+  </p>
+  <video class="video" src="video/document_5388600616786366377.mp4" controls playsinline></video>
+</section>
+
+<!-- ADVANTAGES -->
+<section class="section reveal">
+  <h2>Переваги</h2>
+  <div class="grid">
+    <div class="card reveal">4 в 1 — не потрібно купувати кілька приладів</div>
+    <div class="card reveal">Turbo-режим — справляється з твердими продуктами</div>
+    <div class="card reveal">Нержавіюча сталь — не боїться гарячого</div>
+    <div class="card reveal">LED-підсвітка — зручно контролювати процес</div>
+    <div class="card reveal">Легкий і компактний — зручно зберігати</div>
+    <div class="card reveal">Потужність 800 Вт — ідеально для дому</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section reveal">
+  <h2>Галерея</h2>
+  <div class="gallery">
+    <img src="img/photo_5388600617246331392_y.jpg" class="reveal">
+    <img src="img/photo_5388600617246331394_y.jpg" class="reveal">
+    <img src="img/photo_5391177223961776181_y.jpg" class="reveal">
+  </div>
+</section>
+
+<!-- SPEC -->
+<section class="section reveal">
+  <h2>Характеристики та комплектація</h2>
+  <div class="grid">
+    <div class="card reveal">Потужність: 800 Вт</div>
+    <div class="card reveal">Мірний стакан 600 мл</div>
+    <div class="card reveal">Подрібнювач</div>
+    <div class="card reveal">Вінчик</div>
+    <div class="card reveal">Насадка для тіста</div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section class="payment reveal">
+  <h2>Оплата та доставка</h2>
+  <p>
+    Оплата здійснюється при отриманні у відділенні Нової Пошти.<br>
+    Передплата не потрібна — ви платите тільки після огляду товару.
+  </p>
+</section>
+
+<!-- WARRANTY -->
+<section class="section reveal">
+  <h2>Гарантія</h2>
+  <p style="text-align:center;">
+    Гарантія 6 місяців.<br>
+    У разі заводського браку допоможемо з обміном або поверненням.
+  </p>
+</section>
+
+<!-- ORDER -->
+<section id="order" class="section reveal" style="text-align:center;">
+  <a href="https://forms.gle/U68hkmjeXLcxtc6X6" target="_blank" class="btn">
+    Оформити замовлення
+  </a>
+</section>
+
+<footer>
+  © Suntera HB-703B
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+    }
+  });
+},{threshold:0.15});
+reveals.forEach(r=>obs.observe(r));
+</script>
+
+</body>
+</html>
